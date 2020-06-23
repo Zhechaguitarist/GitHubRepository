@@ -9,6 +9,8 @@ public interface TradeObjectRepository {
 
     List<TradeObject> read();
 
+    TradeObject readById(Long id);
+
     void update(Long id, TradeObject tradeObject);
 
     void delete(Long id);

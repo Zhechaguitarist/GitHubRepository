@@ -1,6 +1,5 @@
 package com.fourth.fourthproject.controller;
 
-import com.fourth.fourthproject.entity.Organization;
 import com.fourth.fourthproject.entity.TradeObject;
 import com.fourth.fourthproject.service.TradeObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,14 @@ public class TradeObjectController {
         return tradeObjectService.create(tradeObject);
     }
 
-    @GetMapping
+    @GetMapping("/list/read")
     private List<TradeObject> read() {
         return tradeObjectService.read();
+    }
+
+    @GetMapping("/{id}")
+    private TradeObject readById(@PathVariable(name = "id") Long id) {
+        return tradeObjectService.readById(id);
     }
 
     @PutMapping("/{id}")

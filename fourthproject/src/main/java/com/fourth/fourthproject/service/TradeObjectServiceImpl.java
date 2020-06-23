@@ -24,6 +24,11 @@ public class TradeObjectServiceImpl implements TradeObjectService {
     }
 
     @Override
+    public TradeObject readById(Long id) {
+        return tradeObjectRepository.readById(id);
+    }
+
+    @Override
     public List<TradeObject> update(Long id, TradeObject tradeObject) {
         tradeObjectRepository.update(id, tradeObject);
         return tradeObjectRepository.read();

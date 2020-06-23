@@ -10,6 +10,8 @@ public interface OrganizationService {
 
     List<Organization> read();
 
+    Organization readById(Long id);
+
     List<Organization> update(Long id, Organization organization);
 
     List<Organization> delete(Long id);

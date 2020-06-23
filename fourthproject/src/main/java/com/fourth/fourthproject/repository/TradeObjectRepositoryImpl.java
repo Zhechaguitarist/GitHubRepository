@@ -1,6 +1,5 @@
 package com.fourth.fourthproject.repository;
 
-import com.fourth.fourthproject.entity.Organization;
 import com.fourth.fourthproject.entity.TradeObject;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,6 +40,23 @@ public class TradeObjectRepositoryImpl implements TradeObjectRepository {
     @Override
     public List<TradeObject> read() {
         return jdbcTemplate.query("SELECT * FROM tradeobject", this::extractTradeObject);
+    }
+
+    @Override
+    public TradeObject readById(Long id) {
+        return jdbcTemplate.query("SELECT * FROM tradeobject WHERE id = ?", ps -> {
+            int idx = 0;
+            ps.setLong(++idx, id);
+        }, rs -> {
+            if (rs.next()) {
+                TradeObject tradeObject = new TradeObject();
+                tradeObject.setId(rs.getLong("id"));
+                tradeObject.setName(rs.getString("name"));
+                tradeObject.setInn(rs.getLong("inn"));
+                return tradeObject;
+            }
+            return null;
+        });
     }
 
     @Override

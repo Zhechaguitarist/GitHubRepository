@@ -19,9 +19,14 @@ public class OrganizationController {
         return organizationService.create(organization);
     }
 
-    @GetMapping
+    @GetMapping("/list/read")
     private List<Organization> read() {
         return organizationService.read();
+    }
+
+    @GetMapping("/{id}")
+    private Organization readById(@PathVariable(name = "id") Long id) {
+        return organizationService.readById(id);
     }
 
     @PutMapping("/{id}")

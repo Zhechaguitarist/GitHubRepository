@@ -42,6 +42,23 @@ public class OrganizationRepositoryImpl implements OrganizationRepository {
     }
 
     @Override
+    public Organization readById(Long id) {
+        return jdbcTemplate.query("SELECT * FROM organization WHERE id = ?", ps -> {
+            int idx = 0;
+            ps.setLong(++idx, id);
+        }, rs -> {
+            if (rs.next()) {
+                Organization organization = new Organization();
+                organization.setId(rs.getLong("id"));
+                organization.setName(rs.getString("name"));
+                organization.setInn(rs.getLong("inn"));
+                return organization;
+            }
+            return null;
+        });
+    }
+
+    @Override
     public void update(Long id, Organization organization) {
         jdbcTemplate.update("UPDATE organization SET name = ?, inn = ? WHERE id = ?", ps -> {
             int idx = 0;

@@ -10,6 +10,8 @@ public interface OrganizationRepository {
 
     List<Organization> read();
 
+    Organization readById(Long id);
+
     void update(Long id, Organization organization);
 
     void delete(Long id);

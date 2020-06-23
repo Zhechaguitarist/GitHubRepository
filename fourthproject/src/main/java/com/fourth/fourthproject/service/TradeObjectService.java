@@ -10,6 +10,8 @@ public interface TradeObjectService {
 
     List<TradeObject> read();
 
+    TradeObject readById(Long id);
+
     List<TradeObject> update(Long id, TradeObject tradeObject);
 
     List<TradeObject> delete(Long id);
