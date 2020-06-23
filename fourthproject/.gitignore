@@ -28,3 +28,20 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# eclipse
+.project
+.classpath
+.settings
+.editorconfig
+.sonar
+
+# idea
+.idea
+*.iml
+*.iws
+*.ipr
+
+# common
+target/
+*.class
