@@ -15,22 +15,22 @@ public class TradeObjectController {
     @Autowired
     private TradeObjectService tradeObjectService;
 
-    @PostMapping("/create")
+    @PostMapping
     private Long create(@RequestBody TradeObject tradeObject) {
         return tradeObjectService.create(tradeObject);
     }
 
-    @GetMapping("/read")
+    @GetMapping
     private List<TradeObject> read() {
         return tradeObjectService.read();
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     private List<TradeObject> update(@PathVariable(name = "id") Long id, @RequestBody TradeObject tradeObject) {
         return tradeObjectService.update(id, tradeObject);
     }
 
-    @PutMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     private List<TradeObject> delete(@PathVariable(name = "id") Long id) {
         return tradeObjectService.delete(id);
     }
